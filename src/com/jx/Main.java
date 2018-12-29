@@ -22,18 +22,18 @@ public class Main {
         }
         System.out.println(courseFile);
         //每一行读成一个String
-        List<String> strings = FileUtils.readFile(courseFile+"/province.txt");
+        List<String> strings = FileUtils.readFile(courseFile+"/province_201810.txt");
         for (int i = 0; i < strings.size(); i++) {
             //姣忎竴琛屾牴鎹┖鏍煎垎鍓诧紝渚夸簬鍙栧嚭鏈夌敤鐨勫??
-            List<String> list = Arrays.asList(strings.get(i).split(" "));
+            List<String> list = Arrays.asList(strings.get(i).trim().split(" "));
             listList.add(list);
         }
         for (int i = 0; i < listList.size(); i++) {
-            if (listList.get(i).size() < 3) {
+            if (listList.get(i).size() < 2) {
                 continue;
             }
-            String provinceName = listList.get(i).get(2);
-            String provinceCode = listList.get(i).get(1);
+            String provinceName = listList.get(i).get(1);
+            String provinceCode = listList.get(i).get(0);
             //遍历获取省级单位
             if (provinceCode.endsWith("0000")) {
                 Province province = new Province();
