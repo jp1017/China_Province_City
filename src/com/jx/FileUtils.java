@@ -19,7 +19,7 @@ import java.util.List;
 class FileUtils {
 
     /**
-     * ä»txtæ–‡ä»¶è¯»å–
+     * ´ÓtxtÎÄ¼ş¶ÁÈ¡
      */
     public static List<String> readFile(String path) {
         List<String> stringList = new ArrayList<String>();
@@ -29,16 +29,16 @@ class FileUtils {
         try {
             String str = "";
             fis = new FileInputStream(path);
-            // ä»æ–‡ä»¶ç³»ç»Ÿä¸­çš„æŸä¸ªæ–‡ä»¶ä¸­è·å–å­—èŠ‚
+            // ´ÓÎÄ¼şÏµÍ³ÖĞµÄÄ³¸öÎÄ¼şÖĞ»ñÈ¡×Ö½Ú
             isr = new InputStreamReader(fis);
             br = new BufferedReader(isr);
             while ((str = br.readLine()) != null) {
                 stringList.add(str);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("æ‰¾ä¸åˆ°æŒ‡å®šæ–‡ä»¶!");
+            System.out.println("ÕÒ²»µ½Ö¸¶¨ÎÄ¼ş!");
         } catch (IOException e) {
-            System.out.println("è¯»å–æ–‡ä»¶å¤±è´¥!");
+            System.out.println("¶ÁÈ¡ÎÄ¼şÊ§°Ü!");
         } finally {
             try {
                 br.close();
@@ -52,7 +52,7 @@ class FileUtils {
     }
 
     /**
-     * ç”Ÿæˆ.jsonæ ¼å¼æ–‡ä»¶
+     * Éú³É.json¸ñÊ½ÎÄ¼ş
      */
     public static boolean createJsonFile(String jsonString, String fullPath) {
         boolean flag = true;
@@ -66,7 +66,7 @@ class FileUtils {
             }
             file.createNewFile();
 
-            // æ ¼å¼åŒ–jsonå­—ç¬¦ä¸²
+            // ¸ñÊ½»¯json×Ö·û´®
             jsonString = JsonFormatTool.formatJson(jsonString);
             Writer write = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
             write.write(jsonString);

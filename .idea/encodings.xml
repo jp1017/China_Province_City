@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/province.json" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/province.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/jx/Area.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/jx/City.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/jx/FileUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/jx/JsonFormatTool.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/jx/Main.java" charset="GBK" />
+  </component>
+</project>

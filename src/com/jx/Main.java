@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         List<List<String>> listList = new ArrayList<List<String>>();
         List<Province> provinceList = new ArrayList<Province>();
-        File directory = new File("");// å‚æ•°ä¸ºç©º
+        File directory = new File("");// ²ÎÊıÎª¿Õ
         String courseFile = null;
         try {
             courseFile = directory.getCanonicalPath();
@@ -21,10 +21,10 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println(courseFile);
-        //æ¯ä¸€è¡Œè¯»æˆä¸€ä¸ªString
+        //Ã¿Ò»ĞĞ¶Á³ÉÒ»¸öString
         List<String> strings = FileUtils.readFile(courseFile+"/province.txt");
         for (int i = 0; i < strings.size(); i++) {
-            //æ¯ä¸€è¡Œæ ¹æ®ç©ºæ ¼åˆ†å‰²ï¼Œä¾¿äºå–å‡ºæœ‰ç”¨çš„å€¼
+            //æ¯ä¸€è¡Œæ ¹æ®ç©ºæ ¼åˆ†å‰²ï¼Œä¾¿äºå–å‡ºæœ‰ç”¨çš„å??
             List<String> list = Arrays.asList(strings.get(i).split(" "));
             listList.add(list);
         }
@@ -34,7 +34,7 @@ public class Main {
             }
             String provinceName = listList.get(i).get(2);
             String provinceCode = listList.get(i).get(1);
-            //éå†è·å–çœçº§å•ä½
+            //±éÀú»ñÈ¡Ê¡¼¶µ¥Î»
             if (provinceCode.endsWith("0000")) {
                 Province province = new Province();
                 provinceList.add(province);
@@ -42,8 +42,8 @@ public class Main {
                 province.setName(provinceName);
                 List<City> cities = new ArrayList<City>();
                 province.setCityList(cities);
-                //é¦™æ¸¯ï¼Œæ¾³é—¨ï¼Œå°æ¹¾ï¼Œæ²¡æœ‰å¸‚çº§è¡Œæ”¿å•ä½åˆ’åˆ†ï¼ŒåŸå¸‚ åœ°åŒº å’Œçœä»½ä¿æŒä¸€è‡´
-                if (provinceName.contains("é¦™æ¸¯")||provinceName.contains("æ¾³é—¨")||provinceName.contains("å°æ¹¾")){
+                //Ïã¸Û£¬°ÄÃÅ£¬Ì¨Íå£¬Ã»ÓĞÊĞ¼¶ĞĞÕşµ¥Î»»®·Ö£¬³ÇÊĞ µØÇø ºÍÊ¡·İ±£³ÖÒ»ÖÂ
+                if (provinceName.contains("Ïã¸Û")||provinceName.contains("°ÄÃÅ")||provinceName.contains("Ì¨Íå")){
                     City city = new City();
                     List<Area> areas = new ArrayList<Area>();
                     city.setName(provinceName);
@@ -55,15 +55,15 @@ public class Main {
                     area.setCode(provinceCode);
                     areas.add(area);
                 }
-                //ç›´è¾–å¸‚ åŸå¸‚å’Œçœä»½åç§°ä¸€æ ·
-                if (provinceName.contains("åŒ—äº¬")||provinceName.contains("ä¸Šæµ·")||provinceName.contains("å¤©æ´¥")||provinceName.contains("é‡åº†")){
+                //Ö±Ï½ÊĞ ³ÇÊĞºÍÊ¡·İÃû³ÆÒ»Ñù
+                if (provinceName.contains("±±¾©")||provinceName.contains("ÉÏº£")||provinceName.contains("Ìì½ò")||provinceName.contains("ÖØÇì")){
                     City city = new City();
                     List<Area> areas = new ArrayList<Area>();
                     city.setName(provinceName);
                     city.setCode(provinceCode);
                     city.setAreaList(areas);
                     cities.add(city);
-                    //å¿åŒº
+                    //ÏØÇø
                     for (int k = 0; k < listList.size(); k++) {
                         if (listList.get(k).size() < 3) {
                             continue;
@@ -84,7 +84,7 @@ public class Main {
                     }
                     String cityName = listList.get(j).get(2);
                     String cityCode = listList.get(j).get(1);
-                    //éå†è·å–åœ°çº§å¸‚
+                    //±éÀú»ñÈ¡µØ¼¶ÊĞ
                     if (!cityCode.equals(provinceCode) && cityCode.startsWith(provinceCode.substring(0, 2)) && cityCode.endsWith("00")) {
                         City city = new City();
                         List<Area> areas = new ArrayList<Area>();
@@ -92,7 +92,7 @@ public class Main {
                         city.setCode(cityCode);
                         city.setAreaList(areas);
                         cities.add(city);
-                        //éå†è·å–å¿åŒº
+                        //±éÀú»ñÈ¡ÏØÇø
                         for (int k = 0; k < listList.size(); k++) {
                             if (listList.get(k).size() < 3) {
                                 continue;
@@ -110,9 +110,9 @@ public class Main {
                 }
             }
         }
-        //è½¬åŒ–æˆJSONæ•°æ®
+        //×ª»¯³ÉJSONÊı¾İ
         String jsonStrings = new Gson().toJson(provinceList);
-        //å†™å…¥æ–‡ä»¶
+        //Ğ´ÈëÎÄ¼ş
         FileUtils.createJsonFile(jsonStrings, courseFile+"/province.json");
     }
 
